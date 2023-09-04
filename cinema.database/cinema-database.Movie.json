@@ -1,0 +1,99 @@
+[{
+  "_id": {
+    "$oid": "64f07d3e443d3a0f9ab4d090"
+  },
+  "poster": "/uploads/movies/avatar-small.jpg",
+  "bigPoster": "/uploads/movies/avatar.jpg",
+  "title": "Avatar",
+  "rating": 4.5,
+  "genres": [
+    "64e71a57a8782273ca97cb8a",
+    "64e7126da8782273ca97cb0f"
+  ],
+  "countOpened": 27,
+  "videoUrl": "/uploads/movies/avatar.mp4",
+  "actors": [],
+  "slug": "avatar",
+  "isSendTelegram": false,
+  "createdAt": {
+    "$date": "2023-08-31T11:45:02.013Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-31T12:26:43.256Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64f0c747d3f767d754cc1af8"
+  },
+  "poster": "/uploads/movies/ip-man-small.jpg",
+  "bigPoster": "/uploads/movies/ip-man.jpg",
+  "title": "Ip Man 2",
+  "rating": 4,
+  "genres": [
+    "64e71a57a8782273ca97cb8a"
+  ],
+  "countOpened": 8,
+  "videoUrl": "/uploads/movies/ip-man.mp4",
+  "actors": [],
+  "slug": "ip-man-2",
+  "isSendTelegram": false,
+  "createdAt": {
+    "$date": "2023-08-31T17:00:55.662Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-31T17:00:55.662Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64f0cc01d3f767d754cc1b2c"
+  },
+  "poster": "/uploads/movies/encanto.jpg",
+  "bigPoster": "/uploads/movies/encanto-big.jpg",
+  "title": "Encanto",
+  "rating": 4.3,
+  "genres": [
+    "64ec4ea080a8f2246be18e7c",
+    "64e7126da8782273ca97cb0f"
+  ],
+  "countOpened": 10,
+  "videoUrl": "/uploads/movies/encanto.mp4",
+  "actors": [],
+  "slug": "encanto",
+  "isSendTelegram": false,
+  "createdAt": {
+    "$date": "2023-08-31T17:21:05.007Z"
+  },
+  "updatedAt": {
+    "$date": "2023-08-31T17:24:49.966Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64f18946d3f767d754cc1b3f"
+  },
+  "poster": "/uploads/movies/moana.jpg",
+  "bigPoster": "/uploads/movies/moana-big.jpg",
+  "title": "Moana",
+  "rating": 4,
+  "genres": [
+    "64ec4ea080a8f2246be18e7c",
+    "64e7126da8782273ca97cb0f"
+  ],
+  "countOpened": 22,
+  "videoUrl": "",
+  "actors": [],
+  "slug": "moana",
+  "isSendTelegram": false,
+  "createdAt": {
+    "$date": "2023-09-01T06:48:38.970Z"
+  },
+  "updatedAt": {
+    "$date": "2023-09-01T06:48:38.970Z"
+  },
+  "__v": 0
+}]
