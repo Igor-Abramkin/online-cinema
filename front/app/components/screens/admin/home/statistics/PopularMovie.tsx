@@ -32,7 +32,9 @@ const PopularMovie: FC = () => {
 			) : (
 				movie && (
 					<>
-						<h3>{movie.countOpened}</h3>
+						<h3>
+							{movie.title} was opened {movie.countOpened} times
+						</h3>
 						<Link href={getMovieUrl(movie.slug)}>
 							<a>
 								<Image

@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
 
-import { IMovie } from '@/components/shared/types/movie.types'
+import { IMovie } from '@/shared/types/movie.types'
 
 import { getMovieUrl } from '@/configs/api.config'
 

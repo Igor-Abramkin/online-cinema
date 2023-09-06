@@ -1,8 +1,8 @@
 const colors = require('tailwindcss/colors')
 const plugin = require('tailwindcss/plugin')
 
-const primary = '#E30B13'
-// const primary = '#4A0DCC'
+// const primary = '#E30B13'
+const primary = '#2F58EA'
 
 module.exports = {
 	content: [
@@ -17,11 +17,18 @@ module.exports = {
 			gray: {
 				300: '#d9dae8',
 				500: '#999AA5',
-				600: '#66676E',
+				600: '#8A8B96',
 				700: '#39393f',
 				800: '#242529',
-				900: '#191B1F',
-				950: '#101215',
+				// 900: '#191B1F',
+				// 300: '#8F96EC',
+				// 500: '#2430B5',
+				// 600: '#222D7A',
+				// 700: '#18184A',
+				// 800: '#242529',
+				// 800: '#12182F',
+				900: '#050A1B',
+				950: '#000010',
 			},
 			transparent: colors.transparent,
 			yellow: {
@@ -89,7 +96,7 @@ module.exports = {
 					borderRadius: '0.65rem',
 					transition: 'background-color .3s ease-in-out',
 					'&:hover': {
-						backgroundColor: '#ff0009',
+						backgroundColor: '#0E43FF',
 					},
 				},
 

@@ -30,7 +30,7 @@
 		"react": "17.0.2",
 		"react-custom-scrollbars": "^4.2.1",
 		"react-dom": "17.0.2",
-		"react-draft-wysiwyg": "^1.14.7",
+		"react-draft-wysiwyg": "^1.15.0",
 		"react-hook-form": "^7.25.3",
 		"react-icons": "^4.10.1",
 		"react-loading-skeleton": "^3.3.1",
@@ -41,12 +41,12 @@
 		"react-star-rating-component": "^1.4.1",
 		"react-transition-group": "^4.4.2",
 		"sass": "^1.49.0",
-		"string-strip-html": "^9.1.6",
+		"string-strip-html": "^13.4.2",
 		"tailwind-scrollbar-hide": "^1.1.7"
 	},
 	"devDependencies": {
 		"@trivago/prettier-plugin-sort-imports": "^4.2.0",
-		"@types/draft-js": "^0.11.9",
+		"@types/draft-js": "^0.11.12",
 		"@types/draftjs-to-html": "^0.8.1",
 		"@types/html-to-draftjs": "^1.4.0",
 		"@types/js-cookie": "^3.0.1",

@@ -6,7 +6,7 @@ import { getAdminHomeUrl } from '@/configs/url.config'
 
 import MenuItem from '../MenuItem'
 
-import LogoutButton from './logoutButton'
+import LogoutButton from './LogoutButton'
 
 const AuthItems: FC = () => {
 	const { user } = useAuth()

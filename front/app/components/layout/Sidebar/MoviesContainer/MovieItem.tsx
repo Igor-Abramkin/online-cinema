@@ -2,8 +2,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
 
-import { IMovie } from '@/components/shared/types/movie.types'
 import { MaterialIcon } from '@/components/ui/MaterialIcon'
+
+import { IMovie } from '@/shared/types/movie.types'
 
 import { getGenresListEach } from '@/utils/movie/getGenresList'
 

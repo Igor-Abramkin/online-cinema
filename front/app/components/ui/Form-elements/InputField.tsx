@@ -3,7 +3,7 @@ import { rest } from 'lodash'
 import { forwardRef } from 'react'
 
 import styles from './Form-elements.module.scss'
-import { IField } from './form-interface'
+import { IField } from './form.interface'
 
 const InputField = forwardRef<HTMLInputElement, IField>(
 	({ placeholder, error, type = 'text', style, ...rest }, ref) => {
