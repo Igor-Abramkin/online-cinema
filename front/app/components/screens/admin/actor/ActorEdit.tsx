@@ -6,6 +6,7 @@ import { stripHtml } from 'string-strip-html'
 import Button from '@/components/ui/Form-elements/Button'
 import InputField from '@/components/ui/Form-elements/InputField'
 import SlugField from '@/components/ui/Form-elements/SlugField/SlugField'
+import UploadField from '@/components/ui/Form-elements/UploadField/UploadField'
 import Heading from '@/components/ui/Heading/Heading'
 import SkeletonLoader from '@/components/ui/SkeletonLoader'
 import AdminNavigation from '@/components/ui/admin-navigation/AdminNavigation'
@@ -17,11 +18,6 @@ import formStyles from '../../../ui/Form-elements/admin-form.module.scss'
 
 import { IActorEditInput } from './actor-edit.interface'
 import { useActorEdit } from './useActorEdit'
-
-const DynamicTextEditor = dynamic(
-	() => import('@/components/ui/Form-elements/TextEditor'),
-	{ ssr: false }
-)
 
 const ActorEdit: FC = () => {
 	const {
@@ -63,20 +59,26 @@ const ActorEdit: FC = () => {
 								/>
 							</div>
 
-							{/* <Controller
-							name="photo"
-							control={control}
-							defaultValue=""
-							render={({
-								field: { value, onChange },
-								fieldState: { error },
-							}) => (
-								//photo upload
-							)}
-							rules={{
-								required: 'Photo is required'
-							}}
-						/> */}
+							<Controller
+								name="photo"
+								control={control}
+								defaultValue=""
+								render={({
+									field: { value, onChange },
+									fieldState: { error },
+								}) => (
+									<UploadField
+										onChange={onChange}
+										value={value}
+										error={error}
+										folder="actors"
+										placeholder="Photo"
+									/>
+								)}
+								rules={{
+									required: 'Photo is required',
+								}}
+							/>
 						</div>
 						<Button>Update</Button>
 					</>
