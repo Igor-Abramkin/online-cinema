@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import Meta from '@/utils/meta/Meta'
 
-import { getMovieUrl } from '@/configs/api.config'
+import { getMovieUrl } from '@/configs/url.config'
 
 import Description from '../Heading/Description'
 import Heading from '../Heading/Heading'

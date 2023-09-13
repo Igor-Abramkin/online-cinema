@@ -1,4 +1,3 @@
-import { errorCatch } from 'api/api.helpers'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 
 import MoviesCatalog from '@/components/ui/movies-catalog/MoviesCatalog'
