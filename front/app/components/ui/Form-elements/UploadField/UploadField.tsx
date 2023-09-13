@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { FC } from 'react'
 
 import SkeletonLoader from '../../SkeletonLoader'
-import styles from '../form-elements.module.scss'
+import styles from '../Form-elements.module.scss'
 import { IUploadField } from '../form.interface'
 
 import { useUpload } from './useUpload'

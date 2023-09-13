@@ -6,7 +6,7 @@ import { FC, useEffect, useState } from 'react'
 import { Editor } from 'react-draft-wysiwyg'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 
-import styles from './Form-elements.module.scss'
+import styles from './form-elements.module.scss'
 import { ITextEditor } from './form.interface'
 
 const TextEditor: FC<ITextEditor> = ({

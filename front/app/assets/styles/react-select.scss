@@ -57,14 +57,14 @@
 	}
 
 	&__menu {
-		background-color: #292a2e !important;
+		background-color: #000010 !important;
 		color: rgba(white, 0.6) !important;
 	}
 
 	&__option {
 		cursor: pointer !important;
 		&--is-focused {
-			background-color: lighten(#292a2e, 8%) !important;
+			background-color: lighten(#18184a, 8%) !important;
 		}
 	}
 

@@ -2,7 +2,7 @@ import { FC } from 'react'
 import ReactSelect, { OnChangeValue } from 'react-select'
 import makeAnimated from 'react-select/animated'
 
-import formStyles from '../Form-elements/form-elements.module.scss'
+import formStyles from '../Form-elements/Form-elements.module.scss'
 
 import styles from './Select.module.scss'
 import { IOption, ISelect } from './select.interface'
@@ -46,6 +46,7 @@ const Select: FC<ISelect> = ({
 					value={getValue()}
 					onChange={onChange}
 					isMulti={isMulti}
+					noOptionsMessage={() => 'No such varient'}
 					components={animatedComponents}
 					isLoading={isLoading}
 				/>

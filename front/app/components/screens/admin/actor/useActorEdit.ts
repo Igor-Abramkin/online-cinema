@@ -13,20 +13,20 @@ import { getAdminUrl } from '@/configs/url.config'
 import { IActorEditInput } from './actor-edit.interface'
 
 export const useActorEdit = (setValue: UseFormSetValue<IActorEditInput>) => {
-	const { push, query } = useRouter()
+	const { query, push } = useRouter()
 
 	const actorId = String(query.id)
 
 	const { isLoading } = useQuery(
-		['actor, actorId'],
+		['actor', actorId],
 		() => ActorService.getById(actorId),
 		{
-			onSuccess: ({ data }) => {
+			onSuccess({ data }) {
 				getKeys(data).forEach((key) => {
 					setValue(key, data[key])
 				})
 			},
-			onError: (error) => {
+			onError(error) {
 				toastError(error, 'Get actor')
 			},
 			enabled: !!query.id,
@@ -37,17 +37,19 @@ export const useActorEdit = (setValue: UseFormSetValue<IActorEditInput>) => {
 		'update actor',
 		(data: IActorEditInput) => ActorService.update(actorId, data),
 		{
-			onError: (error) => {
+			onError(error) {
 				toastError(error, 'Update actor')
 			},
 			onSuccess() {
-				toastr.success('Update actor', 'Succesfully updated')
+				toastr.success('Update actor', 'update was successful')
 				push(getAdminUrl('actors'))
 			},
 		}
 	)
+
 	const onSubmit: SubmitHandler<IActorEditInput> = async (data) => {
 		await mutateAsync(data)
 	}
+
 	return { onSubmit, isLoading }
 }

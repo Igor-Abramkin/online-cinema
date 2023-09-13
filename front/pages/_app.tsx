@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 import { TypeComponentAuthFields } from '@/shared/types/auth.types'
 
 import '@/assets/styles/globals.scss'
+import '@/assets/styles/react-select.scss'
 
 import MainProvider from '../app/providers/MainProvider'
 

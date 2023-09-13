@@ -9,13 +9,24 @@ import { getMovieUrl } from '@/configs/api.config'
 
 export const MovieService = {
 	async getAll(searchTerm?: string) {
-		return axiosClassic.get<IMovie[]>(getMovieUrl(``), {
+		return axiosClassic.get<IMovie[]>(getMovieUrl(''), {
 			params: searchTerm ? { searchTerm } : {},
 		})
 	},
 
+	async getBySlug(slug: string) {
+		return axiosClassic.get<IMovie>(getMovieUrl(`/by-slug/${slug}`))
+	},
 	async getById(_id: string) {
 		return axios.get<IMovieEditInput>(getMovieUrl(`/${_id}`))
+	},
+	async getByGenres(genreIds: string[]) {
+		return axiosClassic.post<IMovie[]>(getMovieUrl(`/by-genres/`), {
+			genreIds,
+		})
+	},
+	async getByActor(actorId: string) {
+		return axiosClassic.get<IMovie[]>(getMovieUrl(`/by-actor/${actorId}`))
 	},
 	async create() {
 		return axios.post<string>(getMovieUrl(`/`))

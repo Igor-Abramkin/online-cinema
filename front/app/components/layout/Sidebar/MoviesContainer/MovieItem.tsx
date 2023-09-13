@@ -17,7 +17,7 @@ const MovieItem: FC<{ movie: IMovie }> = ({ movie }) => {
 	return (
 		<div className={styles.item}>
 			<Link href={getMovieUrl(movie.slug)}>
-				<a>
+				<a draggable={false}>
 					<Image
 						width={65}
 						height={97}
@@ -34,7 +34,9 @@ const MovieItem: FC<{ movie: IMovie }> = ({ movie }) => {
 					<div className={styles.genres}>
 						{movie.genres.map((genre, idx) => (
 							<Link key={genre._id} href={getGenreUrl(genre.slug)}>
-								<a>{getGenresListEach(idx, movie.genres.length, genre.name)}</a>
+								<a>
+									{getGenresListEach(idx, movie.genres.length, genre.name)}{' '}
+								</a>
 							</Link>
 						))}
 					</div>

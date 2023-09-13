@@ -43,7 +43,7 @@ const MovieEdit: FC = () => {
 	return (
 		<Meta title="Edit Movie">
 			<AdminNavigation />
-			<Heading title="Edit genre" />
+			<Heading title="Edit movie" />
 			<form onSubmit={handleSubmit(onSubmit)} className={formStyles.form}>
 				{isLoading ? (
 					<SkeletonLoader count={3} />
@@ -76,7 +76,7 @@ const MovieEdit: FC = () => {
 								{...register('parameters.duration', {
 									required: 'Duration is required',
 								})}
-								placeholder="Duration"
+								placeholder="Duration (min)"
 								error={errors.parameters?.duration}
 								style={{ width: '31%' }}
 							/>
@@ -88,7 +88,6 @@ const MovieEdit: FC = () => {
 								error={errors.parameters?.year}
 								style={{ width: '31%' }}
 							/>
-							{/* React select */}
 							<Controller
 								name="genres"
 								control={control}
@@ -99,6 +98,23 @@ const MovieEdit: FC = () => {
 										isLoading={isGenresLoading}
 										isMulti
 										placeholder="Genres"
+										error={error}
+									/>
+								)}
+								rules={{
+									required: 'Please select at least one genre!',
+								}}
+							/>
+							<Controller
+								name="actors"
+								control={control}
+								render={({ field, fieldState: { error } }) => (
+									<DynamicSelect
+										field={field}
+										options={actors || []}
+										isLoading={isActorsLoading}
+										isMulti
+										placeholder="Actors"
 										error={error}
 									/>
 								)}
@@ -139,7 +155,7 @@ const MovieEdit: FC = () => {
 										value={value}
 										error={error}
 										folder="movies"
-										placeholder="bigPoster"
+										placeholder="big Poster"
 									/>
 								)}
 								rules={{

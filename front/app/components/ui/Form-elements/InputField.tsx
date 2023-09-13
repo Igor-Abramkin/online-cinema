@@ -1,5 +1,4 @@
 import cn from 'classnames'
-import { rest } from 'lodash'
 import { forwardRef } from 'react'
 
 import styles from './Form-elements.module.scss'

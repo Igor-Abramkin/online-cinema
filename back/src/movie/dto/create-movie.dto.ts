@@ -4,7 +4,7 @@ import {
 	IsNumber,
 	IsObject,
 	IsString,
-} from 'class-validator'
+} from "class-validator"
 
 export class Parameter {
 	@IsNumber()
@@ -26,9 +26,6 @@ export class CreateMovieDto {
 
 	@IsString()
 	title: string
-
-	@IsString()
-	description: string
 
 	@IsObject()
 	parameters?: Parameter

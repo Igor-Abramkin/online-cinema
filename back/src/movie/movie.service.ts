@@ -1,16 +1,17 @@
-import { Injectable } from '@nestjs/common'
-import { ModelType, DocumentType } from '@typegoose/typegoose/lib/types'
-import { Types } from 'mongoose'
-import { InjectModel } from 'nestjs-typegoose'
-import { TelegramService } from 'src/telegram/telegram.service'
+import { Injectable } from "@nestjs/common"
+import { ModelType, DocumentType } from "@typegoose/typegoose/lib/types"
+import { Types } from "mongoose"
+import { InjectModel } from "nestjs-typegoose"
+import { TelegramService } from "src/telegram/telegram.service"
 
-import { CreateMovieDto } from './dto/create-movie.dto'
-import { MovieModel } from './movie.model'
+import { CreateMovieDto } from "./dto/create-movie.dto"
+import { MovieModel } from "./movie.model"
 
 @Injectable()
 export class MovieService {
 	constructor(
-		@InjectModel(MovieModel) private readonly movieModel: ModelType<MovieModel>,
+		@InjectModel(MovieModel)
+		private readonly movieModel: ModelType<MovieModel>,
 		private readonly telegramService: TelegramService
 	) {}
 
@@ -21,7 +22,7 @@ export class MovieService {
 			options = {
 				$or: [
 					{
-						title: new RegExp(searchTerm, 'i'),
+						title: new RegExp(searchTerm, "i"),
 					},
 				],
 			}
@@ -29,17 +30,22 @@ export class MovieService {
 
 		return this.movieModel
 			.find(options)
-			.select('-updatedAt -__v')
-			.sort({ createdAt: 'desc' })
-			.populate('genres actors')
+			.select("-updatedAt -__v")
+			.sort({ createdAt: "desc" })
+			.populate("genres actors")
 			.exec()
 	}
 
 	async bySlug(slug: string): Promise<DocumentType<MovieModel>> {
-		return this.movieModel.findOne({ slug }).populate('genres actors').exec()
+		return this.movieModel
+			.findOne({ slug })
+			.populate("genres actors")
+			.exec()
 	}
 
-	async byActor(actorId: Types.ObjectId): Promise<DocumentType<MovieModel>[]> {
+	async byActor(
+		actorId: Types.ObjectId
+	): Promise<DocumentType<MovieModel>[]> {
 		return this.movieModel.find({ actors: actorId }).exec()
 	}
 
@@ -63,14 +69,14 @@ export class MovieService {
 
 	async create(): Promise<Types.ObjectId> {
 		const defaultValue: CreateMovieDto = {
-			bigPoster: '',
+			bigPoster: "",
 			actors: [],
 			genres: [],
-			description: '',
-			poster: '',
-			title: '',
-			videoUrl: '',
-			slug: '',
+			// description: '',
+			poster: "",
+			title: "",
+			videoUrl: "",
+			slug: "",
 		}
 		const movie = await this.movieModel.create(defaultValue)
 		return movie._id
@@ -80,11 +86,6 @@ export class MovieService {
 		id: string,
 		dto: CreateMovieDto
 	): Promise<DocumentType<MovieModel> | null> {
-		if (!dto.isSendTelegram) {
-			await this.sendNotifications(dto)
-			dto.isSendTelegram = true
-		}
-
 		return this.movieModel.findByIdAndUpdate(id, dto, { new: true }).exec()
 	}
 
@@ -96,7 +97,7 @@ export class MovieService {
 		return this.movieModel
 			.find({ countOpened: { $gt: 0 } })
 			.sort({ countOpened: -1 })
-			.populate('genres')
+			.populate("genres")
 			.exec()
 	}
 
@@ -107,23 +108,4 @@ export class MovieService {
 	}
 
 	/* Utilites */
-	async sendNotifications(dto: CreateMovieDto) {
-		if (process.env.NODE_ENV !== 'development')
-			await this.telegramService.sendPhoto(dto.poster)
-
-		const msg = `<b>${dto.title}</b>\n\n` + `${dto.description}\n\n`
-
-		await this.telegramService.sendMessage(msg, {
-			reply_markup: {
-				inline_keyboard: [
-					[
-						{
-							url: 'https://okko.tv/movie/free-guy',
-							text: '🍿 Go to watch',
-						},
-					],
-				],
-			},
-		})
-	}
 }

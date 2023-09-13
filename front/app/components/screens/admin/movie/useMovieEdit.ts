@@ -13,20 +13,20 @@ import { getAdminUrl } from '@/configs/url.config'
 import { IMovieEditInput } from './movie-edit.interface'
 
 export const useMovieEdit = (setValue: UseFormSetValue<IMovieEditInput>) => {
-	const { push, query } = useRouter()
+	const { query, push } = useRouter()
 
 	const movieId = String(query.id)
 
 	const { isLoading } = useQuery(
-		['movie, movieId'],
+		['movie', movieId],
 		() => MovieService.getById(movieId),
 		{
-			onSuccess: ({ data }) => {
+			onSuccess({ data }) {
 				getKeys(data).forEach((key) => {
 					setValue(key, data[key])
 				})
 			},
-			onError: (error) => {
+			onError(error) {
 				toastError(error, 'Get movie')
 			},
 			enabled: !!query.id,
@@ -37,17 +37,19 @@ export const useMovieEdit = (setValue: UseFormSetValue<IMovieEditInput>) => {
 		'update movie',
 		(data: IMovieEditInput) => MovieService.update(movieId, data),
 		{
-			onError: (error) => {
+			onError(error) {
 				toastError(error, 'Update movie')
 			},
 			onSuccess() {
-				toastr.success('Update movie', 'Succesfully updated')
+				toastr.success('Update movie', 'update was successful')
 				push(getAdminUrl('movies'))
 			},
 		}
 	)
+
 	const onSubmit: SubmitHandler<IMovieEditInput> = async (data) => {
 		await mutateAsync(data)
 	}
+
 	return { onSubmit, isLoading }
 }

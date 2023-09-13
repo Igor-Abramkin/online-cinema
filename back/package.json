@@ -1,9 +1,8 @@
 {
 	"name": "movie-app-back-end",
 	"author": {
-		"email": "info@htmllessons.ru",
-		"name": "Max Shushval (htmllessons.ru)",
-		"url": "https://htmllessons.ru"
+		"email": "hello@igorabramkin.ru",
+		"name": "Igor Abramkin"
 	},
 	"description": "Movie application for premium intensive in htmllessons.ru",
 	"version": "0.0.1",

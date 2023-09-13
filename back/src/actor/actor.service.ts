@@ -1,9 +1,9 @@
-import { Injectable } from '@nestjs/common'
-import { ModelType, DocumentType } from '@typegoose/typegoose/lib/types'
-import { Types } from 'mongoose'
-import { InjectModel } from 'nestjs-typegoose'
-import { ActorModel } from './actor.model'
-import { CreateActorDto } from './dto/create-actor.dto'
+import { Injectable } from "@nestjs/common"
+import { ModelType, DocumentType } from "@typegoose/typegoose/lib/types"
+import { Types } from "mongoose"
+import { InjectModel } from "nestjs-typegoose"
+import { ActorModel } from "./actor.model"
+import { CreateActorDto } from "./dto/create-actor.dto"
 
 @Injectable()
 export class ActorService {
@@ -19,10 +19,10 @@ export class ActorService {
 			options = {
 				$or: [
 					{
-						name: new RegExp(searchTerm, 'i'),
+						name: new RegExp(searchTerm, "i"),
 					},
 					{
-						slug: new RegExp(searchTerm, 'i'),
+						slug: new RegExp(searchTerm, "i"),
 					},
 				],
 			}
@@ -33,10 +33,10 @@ export class ActorService {
 				.aggregate()
 				.match(options)
 				.lookup({
-					from: 'Movie',
-					localField: '_id',
-					foreignField: 'actors',
-					as: 'movies',
+					from: "Movie",
+					localField: "_id",
+					foreignField: "actors",
+					as: "movies",
 				})
 				// .lookup({
 				// 	from: 'Movie',
@@ -49,7 +49,7 @@ export class ActorService {
 				// 	as: 'movies',
 				// })
 				.addFields({
-					countMovies: { $size: '$movies' },
+					countMovies: { $size: "$movies" },
 				})
 				.project({ __v: 0, updatedAt: 0, movies: 0 })
 				.sort({ createdAt: -1 })
@@ -72,9 +72,9 @@ export class ActorService {
 
 	async create(): Promise<Types.ObjectId> {
 		const defaultValue: CreateActorDto = {
-			name: '',
-			photo: '',
-			slug: '',
+			name: "",
+			photo: "",
+			slug: "",
 		}
 		const actor = await this.actorModel.create(defaultValue)
 		return actor._id

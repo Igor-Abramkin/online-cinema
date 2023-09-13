@@ -35,7 +35,7 @@ const ActorEdit: FC = () => {
 	return (
 		<Meta title="Edit Actor">
 			<AdminNavigation />
-			<Heading title="Edit genre" />
+			<Heading title="Edit actor" />
 			<form onSubmit={handleSubmit(onSubmit)} className={formStyles.form}>
 				{isLoading ? (
 					<SkeletonLoader count={3} />

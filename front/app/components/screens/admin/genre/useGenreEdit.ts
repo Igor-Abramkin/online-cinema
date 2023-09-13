@@ -13,20 +13,20 @@ import { getAdminUrl } from '@/configs/url.config'
 import { IGenreEditInput } from './genre-edit.interface'
 
 export const useGenreEdit = (setValue: UseFormSetValue<IGenreEditInput>) => {
-	const { push, query } = useRouter()
+	const { query, push } = useRouter()
 
 	const genreId = String(query.id)
 
 	const { isLoading } = useQuery(
-		['genre, genreId'],
+		['genre', genreId],
 		() => GenreService.getById(genreId),
 		{
-			onSuccess: ({ data }) => {
+			onSuccess({ data }) {
 				getKeys(data).forEach((key) => {
 					setValue(key, data[key])
 				})
 			},
-			onError: (error) => {
+			onError(error) {
 				toastError(error, 'Get genre')
 			},
 			enabled: !!query.id,
@@ -37,17 +37,19 @@ export const useGenreEdit = (setValue: UseFormSetValue<IGenreEditInput>) => {
 		'update genre',
 		(data: IGenreEditInput) => GenreService.update(genreId, data),
 		{
-			onError: (error) => {
+			onError(error) {
 				toastError(error, 'Update genre')
 			},
 			onSuccess() {
-				toastr.success('Update genre', 'Succesfully updated')
+				toastr.success('Update genre', 'update was successful')
 				push(getAdminUrl('genres'))
 			},
 		}
 	)
+
 	const onSubmit: SubmitHandler<IGenreEditInput> = async (data) => {
 		await mutateAsync(data)
 	}
+
 	return { onSubmit, isLoading }
 }
