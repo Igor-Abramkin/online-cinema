@@ -41,7 +41,7 @@ const FavouriteButton: FC<{ movieId: string }> = ({ movieId }) => {
 		<button
 			onClick={() => mutateAsync()}
 			className={cn(styles.button, { [styles.animate]: isSmashed })}
-			style={{ backgroundImage: `url(${HeartImage.src}` }}
+			style={{ backgroundImage: `url('/heart-animation.png')` }}
 		/>
 	)
 }

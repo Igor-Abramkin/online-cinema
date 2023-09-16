@@ -10,13 +10,13 @@ import { SaveToStorage, removeTokensStorage } from './auth.helper'
 
 export const AuthService = {
 	async register(email: string, password: string) {
-		const responce = await axiosClassic.post<IAuthResponse>(
+		const response = await axiosClassic.post<IAuthResponse>(
 			getAuthUrl('/register'),
 			{ email, password }
 		)
-		if (responce.data.accessToken) SaveToStorage(responce.data)
+		if (response.data.accessToken) SaveToStorage(response.data)
 
-		return responce
+		return response
 	},
 
 	async login(email: string, password: string) {
