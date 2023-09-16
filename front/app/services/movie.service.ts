@@ -34,6 +34,11 @@ export const MovieService = {
 	async update(_id: string, data: IMovieEditInput) {
 		return axios.put<string>(getMovieUrl(`/${_id}`), data)
 	},
+	async updateCountOpened(slug: string) {
+		return axiosClassic.post<string>(getMovieUrl('/update-count-opened'), {
+			slug,
+		})
+	},
 
 	async getMostPopularMovies() {
 		const { data: movies } = await axiosClassic.get<IMovie[]>(

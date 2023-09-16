@@ -1,7 +1,7 @@
 @import '../../../assets/styles/variables';
 
 .gallery {
-	@apply flex items-center overflow-x-auto flex-nowrap py-3 scrollbar-hide;
+	@apply flex items-center overflow-x-auto flex-nowrap py-3  scrollbar-hide;
 	-webkit-overflow-scrolling: touch;
 }
 
@@ -15,7 +15,6 @@
 
 	&.vertical {
 		@apply mr-4 last:mr-0 w-1/5 h-72;
-
 		max-width: 200px;
 	}
 
